@@ -11,9 +11,9 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 .page-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px}
 .page-title{font-size:18px;font-weight:500;color:#1a1a1a}
 .page-sub{font-size:12px;color:#888;margin-top:2px}
-.vtable{width:100%;border-collapse:collapse;background:#fff;border-radius:12px;border:0.5px solid #d0d0cc;table-layout:fixed;overflow:hidden}
+.vtable{width:100%;border-collapse:collapse;background:#fff;border-radius:12px;border:0.5px solid #d0d0cc;table-layout:fixed}
 .vtable th{font-size:11px;font-weight:500;color:#888;text-align:left;padding:9px 16px;background:#f8f8f6;border-bottom:0.5px solid #d0d0cc;text-transform:uppercase;letter-spacing:.04em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.vtable td{padding:11px 16px;font-size:13px;color:#1a1a1a;border-bottom:0.5px solid #eeeeе8;vertical-align:middle;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.vtable td{padding:11px 16px;font-size:13px;color:#1a1a1a;border-bottom:0.5px solid #eeeee8;vertical-align:middle;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .vtable tr:last-child td{border-bottom:none}
 .vtable tbody tr:hover td{background:#f8f8f6}
 .mono{font-family:'SF Mono',monospace;font-size:12px;color:#888}
@@ -27,13 +27,13 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 .menu-wrap{position:relative;display:inline-block}
 .menu-btn{width:28px;height:28px;border-radius:50%;border:0.5px solid #d0d0cc;background:none;cursor:pointer;display:flex;align-items:center;justify-content:center;color:#888;font-size:13px;font-weight:700;letter-spacing:1px;line-height:1}
 .menu-btn:hover,.menu-btn.open{background:#f8f8f6;color:#1a1a1a;border-color:#aaa}
-.dropdown{display:none;position:absolute;right:0;top:34px;background:#fff;border:0.5px solid #d0d0cc;border-radius:8px;min-width:110px;z-index:200;overflow:hidden;box-shadow:0 4px 12px rgba(0,0,0,0.08)}
+.dropdown{display:none;position:fixed;background:#fff;border:0.5px solid #d0d0cc;border-radius:8px;min-width:110px;z-index:9999;overflow:visible;box-shadow:0 4px 12px rgba(0,0,0,0.12)}
 .dropdown.open{display:block}
 .ditem{display:flex;align-items:center;padding:8px 14px;font-size:13px;color:#1a1a1a;cursor:pointer;white-space:nowrap}
 .ditem:hover{background:#f8f8f6}
 .ditem.danger{color:#dc2626}
 .ditem.danger:hover{background:#fef2f2}
-.ddiv{height:0.5px;background:#eeeeе8;margin:2px 0}
+.ddiv{height:0.5px;background:#eeeee8;margin:2px 0}
 .pagination{display:flex;align-items:center;justify-content:space-between;margin-top:14px;min-height:28px}
 .pag-info{font-size:12px;color:#888}
 .pag-btns{display:flex;gap:4px;flex-wrap:wrap}
@@ -43,13 +43,13 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 .pag-btn:disabled{opacity:.4;cursor:not-allowed}
 .mwrap{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.45);align-items:flex-start;justify-content:center;padding:20px 12px;z-index:100;overflow-y:auto}
 .mwrap.open{display:flex}
-.mdlg{background:#fff;border-radius:12px;border:0.5px solid #d0d0cc;width:100%;max-width:900px;margin:auto}
-.mhdr{display:flex;align-items:flex-start;justify-content:space-between;padding:16px 22px 13px;border-bottom:0.5px solid #eeeeе8}
+.mdlg{background:#fff;border-radius:12px;border:0.5px solid #d0d0cc;width:100%;max-width:900px;margin:auto;overflow:visible}
+.mhdr{display:flex;align-items:flex-start;justify-content:space-between;padding:16px 22px 13px;border-bottom:0.5px solid #eeeee8}
 .mtitle{font-size:15px;font-weight:500;color:#1a1a1a}
 .msub{font-size:12px;color:#888;margin-top:2px}
 .ib{background:none;border:none;cursor:pointer;padding:5px 7px;border-radius:8px;color:#888;font-size:14px;line-height:1}
 .ib:hover{background:#f8f8f6;color:#1a1a1a}
-.tbar{display:flex;padding:0 22px;border-bottom:0.5px solid #eeeeе8}
+.tbar{display:flex;padding:0 22px;border-bottom:0.5px solid #eeeee8}
 .tab{font-size:13px;padding:9px 15px;cursor:pointer;color:#888;border-bottom:2px solid transparent;white-space:nowrap;user-select:none}
 .tab.on{color:#1a1a1a;border-bottom-color:#2563eb;font-weight:500}
 .tab:hover:not(.on){color:#1a1a1a}
@@ -70,7 +70,7 @@ textarea{resize:vertical;min-height:72px}
 .tog::after{content:'';width:14px;height:14px;background:#fff;border-radius:50%;position:absolute;top:2px;left:2px;transition:left .15s}
 .tog.on::after{left:18px}
 .tog-row{display:flex;align-items:center;gap:10px}
-.sdiv{font-size:12px;font-weight:500;color:#888;letter-spacing:.05em;text-transform:uppercase;padding-bottom:8px;border-bottom:0.5px solid #eeeeе8;margin-bottom:14px}
+.sdiv{font-size:12px;font-weight:500;color:#888;letter-spacing:.05em;text-transform:uppercase;padding-bottom:8px;border-bottom:0.5px solid #eeeee8;margin-bottom:14px}
 .field-toolbar{display:flex;align-items:center;gap:10px;margin-bottom:14px;flex-wrap:wrap}
 .search-box{flex:1;min-width:180px;position:relative}
 .search-box input{padding-left:30px}
@@ -79,186 +79,24 @@ textarea{resize:vertical;min-height:72px}
 .ft th{font-size:11px;font-weight:500;color:#888;text-align:left;padding:6px 8px;border-bottom:0.5px solid #d0d0cc;text-transform:uppercase;letter-spacing:.04em;white-space:nowrap}
 .ft th.filterable{cursor:pointer;user-select:none}
 .ft th.filterable:hover{color:#1a1a1a}
-.ft td{padding:8px;border-bottom:0.5px solid #eeeeе8;color:#1a1a1a;vertical-align:middle;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ft td{padding:8px;border-bottom:0.5px solid #eeeee8;color:#1a1a1a;vertical-align:middle;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .ft tr:last-child td{border-bottom:none}
 .ft tbody tr:hover td{background:#f8f8f6}
 .ft .ac{text-align:right;width:52px}
 .tick{color:#15803d;font-size:14px}
 .cross{color:#b91c1c;font-size:14px}
 .empty{text-align:center;padding:24px 0;font-size:13px;color:#888}
-.mftr{display:flex;align-items:center;justify-content:flex-end;gap:8px;padding:13px 22px;border-top:0.5px solid #eeeeе8}
+.mftr{display:flex;align-items:center;justify-content:flex-end;gap:8px;padding:13px 22px;border-top:0.5px solid #eeeee8}
 .sub-wrap{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.55);align-items:flex-start;justify-content:center;padding:20px 12px;z-index:300;overflow-y:auto}
 .sub-wrap.open{display:flex}
 .sub-dlg{background:#fff;border-radius:12px;border:0.5px solid #d0d0cc;width:100%;max-width:560px;margin:auto}
-.sub-hdr{display:flex;align-items:flex-start;justify-content:space-between;padding:16px 22px 13px;border-bottom:0.5px solid #eeeeе8}
+.sub-hdr{display:flex;align-items:flex-start;justify-content:space-between;padding:16px 22px 13px;border-bottom:0.5px solid #eeeee8}
 .sub-body{padding:20px 22px}
-.sub-ftr{display:flex;align-items:center;justify-content:flex-end;gap:8px;padding:13px 22px;border-top:0.5px solid #eeeeе8}
+.sub-ftr{display:flex;align-items:center;justify-content:flex-end;gap:8px;padding:13px 22px;border-top:0.5px solid #eeeee8}
 .cb-row{display:flex;align-items:center;gap:10px;padding:6px 0}
 .cb-row input[type=checkbox]{width:15px;height:15px;accent-color:#2563eb;cursor:pointer;flex-shrink:0}
 .cb-row label{font-size:13px;color:#1a1a1a;cursor:pointer}
 .cbs-grid{display:grid;grid-template-columns:1fr 1fr;gap:0}
-.conditional-block{background:#f8f8f6;border:0.5px solid #eeeeе8;border-radius:8px;padding:12px 14px;margin-top:8px}
+.conditional-block{background:#f8f8f6;border:0.5px solid #eeeee8;border-radius:8px;padding:12px 14px;margin-top:8px}
 .type-badge{display:inline-flex;align-items:center;font-size:11px;padding:2px 8px;border-radius:8px;font-weight:500;white-space:nowrap}
-.badge-std{background:#EFF6FF;color:#1E40AF}
-.badge-calc{background:#F0FDF4;color:#166534}
-.cwrap{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.5);align-items:center;justify-content:center;padding:20px;z-index:400}
-.cwrap.open{display:flex}
-.cbox{background:#fff;border-radius:12px;border:0.5px solid #d0d0cc;padding:24px;max-width:380px;width:100%}
-.ctitle{font-size:15px;font-weight:500;color:#1a1a1a;margin-bottom:8px}
-.cbody{font-size:13px;color:#888;margin-bottom:20px;line-height:1.6}
-.cact{display:flex;gap:8px;justify-content:flex-end}
-.filter-icon{font-size:11px;margin-left:4px;opacity:.6}
-</style>
-</head>
-<body>
-<div id="screen-list">
-  <div class="page">
-    <div class="page-header">
-      <div><div class="page-title">View Designer</div><div class="page-sub">Admin Tools &rsaquo; View Designer</div></div>
-      <button class="bp" id="btn-new">+ New View</button>
-    </div>
-    <table class="vtable">
-      <thead><tr>
-        <th style="width:22%">View name</th><th style="width:22%">SQL View name</th><th style="width:46%">Description</th><th style="width:10%;text-align:right">Actions</th>
-      </tr></thead>
-      <tbody id="views-body"></tbody>
-    </table>
-    <div class="pagination" id="list-pag"></div>
-  </div>
-</div>
-<div class="mwrap" id="mwrap">
-  <div class="mdlg">
-    <div class="mhdr"><div><div class="mtitle" id="mtitle">New View</div><div class="msub" id="msub">Complete the Summary then assign fields on each tab</div></div><button class="ib" id="btn-close-modal" style="font-size:16px;padding:4px 8px">&#x2715;</button></div>
-    <div class="tbar"><div class="tab on" data-tab="summary">Summary</div><div class="tab" data-tab="filter">Filter fields</div><div class="tab" data-tab="formula">Formula fields</div><div class="tab" data-tab="date">Date fields</div></div>
-    <div class="pane vis" id="pane-summary">
-      <div class="fg">
-        <div class="fl"><label class="lb">View name<span class="req">*</span></label><input type="text" id="f-title" placeholder="Name shown in the app"/></div>
-        <div class="fl"><label class="lb">SQL View name</label><input type="text" id="f-sql" placeholder="e.g. vw_employee_core"/><span class="hint">Table name on SQL Database</span></div>
-        <div class="fl"><label class="lb">View Group<span class="req">*</span></label><select id="f-group"><option value="">— select —</option><option>Core</option><option>HR</option><option>Metrics</option><option>Finance</option></select></div>
-        <div class="fl"><label class="lb">Default Date field</label><select id="f-dfield"><option value="">— none —</option><option>Period Start</option><option>Period End</option><option>Record Date</option><option>Hire Date</option></select></div>
-        <div class="full fl"><label class="lb">Description</label><textarea id="f-desc" placeholder="Describe the purpose of this View…"></textarea></div>
-        <div class="fl"><label class="lb">View type<span class="req">*</span></label><select id="f-vtype"><option value="">— select —</option><option value="published">Published View</option><option value="system">System Table</option><option value="import">Import Table</option><option value="security">Security</option></select></div>
-        <div class="fl" style="justify-content:flex-end"><label class="lb">&nbsp;</label><div class="tog-row"><div class="tog" id="tog-ins"></div><span style="font-size:13px;color:#1a1a1a">Disable for Insight</span></div></div>
-      </div>
-    </div>
-    <div class="pane" id="pane-filter">
-      <div class="field-toolbar"><div class="search-box"><span class="search-icon">&#x2315;</span><input type="text" id="ff-search" placeholder="Search by SQL name, Friendly name or Group…"/></div><button class="bp" style="padding:7px 14px;white-space:nowrap" id="btn-open-add-filter">+ Add filter field</button></div>
-      <table class="ft" style="table-layout:fixed"><thead><tr><th style="width:22%">SQL field name</th><th style="width:22%">Friendly name</th><th style="width:22%">Friendly name group</th><th style="width:14%">Is drilldown</th><th class="ac" style="width:8%">Actions</th></tr></thead><tbody id="tb-filter"></tbody></table>
-      <div class="empty" id="em-filter">No filter fields added yet</div><div class="pagination" id="fpag-filter"></div>
-    </div>
-    <div class="pane" id="pane-formula">
-      <div class="field-toolbar"><div class="search-box"><span class="search-icon">&#x2315;</span><input type="text" id="fo-search" placeholder="Search by SQL name, Friendly name or Group…"/></div><button class="bp" style="padding:7px 14px;white-space:nowrap" id="btn-open-add-formula">+ Add formula field</button></div>
-      <table class="ft" style="table-layout:fixed"><thead><tr><th style="width:20%">SQL field name</th><th style="width:20%">Friendly name</th><th style="width:18%">Friendly name group</th><th style="width:14%" class="filterable" id="formula-type-header">Type <span class="filter-icon" id="formula-type-filter-icon">&#x25BC;</span></th><th style="width:12%">Is drilldown</th><th class="ac" style="width:8%">Actions</th></tr></thead><tbody id="tb-formula"></tbody></table>
-      <div class="empty" id="em-formula">No formula fields added yet</div><div class="pagination" id="fpag-formula"></div>
-    </div>
-    <div class="pane" id="pane-date">
-      <div class="field-toolbar"><div class="search-box"><span class="search-icon">&#x2315;</span><input type="text" id="fd-search" placeholder="Search by SQL name, Friendly name or Group…"/></div><button class="bp" style="padding:7px 14px;white-space:nowrap" id="btn-open-add-date">+ Add date field</button></div>
-      <table class="ft" style="table-layout:fixed"><thead><tr><th style="width:22%">SQL field name</th><th style="width:22%">Friendly name</th><th style="width:22%">Friendly name group</th><th style="width:14%">Is drilldown</th><th class="ac" style="width:8%">Actions</th></tr></thead><tbody id="tb-date"></tbody></table>
-      <div class="empty" id="em-date">No date fields added yet</div><div class="pagination" id="fpag-date"></div>
-    </div>
-    <div class="mftr"><button class="bd" id="btn-del" style="display:none">Delete</button><button class="bp" id="btn-save">Save</button></div>
-  </div>
-</div>
-<div class="sub-wrap" id="sub-filter">
-  <div class="sub-dlg">
-    <div class="sub-hdr"><div><div class="mtitle" id="sub-filter-title">Add filter field</div><div class="msub" id="sub-filter-sub"></div></div></div>
-    <div class="sub-body"><div class="fg">
-      <div class="full fl"><label class="lb">SQL field name<span class="req">*</span></label><input type="text" id="sf-sql" placeholder="e.g. department_id"/><span class="hint" id="sf-sql-hint"></span></div>
-      <div class="fl"><label class="lb">Friendly name group</label><select id="sf-grp"><option value="">— select —</option><option>Core</option><option>HR</option><option>Metrics</option><option>Finance</option></select></div>
-      <div class="fl"><label class="lb">Friendly name<span class="req">*</span></label><select id="sf-friendly"><option value="">— select —</option><option>Department</option><option>Location</option><option>Employee ID</option><option>Employee Name</option><option>Cost Centre</option><option>Job Title</option></select></div>
-      <div class="full"><div class="cbs-grid">
-        <div class="cb-row"><input type="checkbox" id="sf-drill"/><label for="sf-drill">Is drilldown</label></div>
-        <div class="cb-row"><input type="checkbox" id="sf-text"/><label for="sf-text">Is text entry filter</label></div>
-        <div class="cb-row"><input type="checkbox" id="sf-pass"/><label for="sf-pass">Pass to drilldown</label></div>
-        <div class="cb-row"><input type="checkbox" id="sf-only"/><label for="sf-only">For filters only</label></div>
-        <div class="cb-row"><input type="checkbox" id="sf-insight"/><label for="sf-insight">Is insight filter</label></div>
-        <div class="cb-row"><input type="checkbox" id="sf-transfer"/><label for="sf-transfer">Is transferable</label></div>
-        <div class="cb-row"><input type="checkbox" id="sf-cat"/><label for="sf-cat">Is categorisation</label></div>
-      </div></div>
-    </div></div>
-    <div class="sub-ftr"><button class="bs" id="sf-back">&#8592; Back</button><button class="bp" id="sf-save">Save</button></div>
-  </div>
-</div>
-<div class="sub-wrap" id="sub-formula">
-  <div class="sub-dlg">
-    <div class="sub-hdr"><div><div class="mtitle" id="sub-formula-title">Add formula field</div><div class="msub" id="sub-formula-sub"></div></div></div>
-    <div class="sub-body"><div class="fg">
-      <div class="full fl"><label class="lb">SQL field name<span class="req">*</span></label><input type="text" id="fo-sql" placeholder="e.g. turnover_rate"/><span class="hint" id="fo-sql-hint"></span></div>
-      <div class="fl"><label class="lb">Friendly name group</label><select id="fo-grp"><option value="">— select —</option><option>Core</option><option>HR</option><option>Metrics</option><option>Finance</option></select></div>
-      <div class="fl"><label class="lb">Friendly name<span class="req">*</span></label><select id="fo-friendly"><option value="">— select —</option><option>Turnover Rate</option><option>Absence Rate</option><option>Headcount Growth</option><option>Avg Salary</option></select></div>
-      <div class="fl"><label class="lb">Formula type<span class="req">*</span></label><select id="fo-type"><option value="">— select —</option><option value="standard">Standard</option><option value="calculated">Calculated</option></select></div>
-      <div class="fl">&nbsp;</div>
-      <div class="full" id="fo-standard-block" style="display:none"><div class="conditional-block"><div class="fg">
-        <div class="fl"><label class="lb">Select Metric<span class="req">*</span></label><select id="fo-metric"><option value="">— select —</option><option>Headcount</option><option>Leavers</option><option>Joiners</option><option>Days Lost</option></select></div>
-        <div class="fl"><label class="lb">Calculation type<span class="req">*</span></label><select id="fo-calc"><option value="">— select —</option><option value="sum">Sum</option><option value="min">Min</option><option value="max">Max</option></select></div>
-      </div></div></div>
-      <div class="full" id="fo-calculated-block" style="display:none"><div class="conditional-block"><div class="fl">
-        <label class="lb">Formula text<span class="req">*</span></label>
-        <textarea id="fo-formula-text" placeholder="e.g. [Leavers] / [Headcount] * 100" rows="3"></textarea>
-        <div id="fo-syntax-msg" style="font-size:11px;margin-top:4px"></div>
-      </div></div></div>
-      <div class="full"><div class="cbs-grid">
-        <div class="cb-row"><input type="checkbox" id="fo-drill"/><label for="fo-drill">Is drilldown</label></div>
-        <div class="cb-row"><input type="checkbox" id="fo-transfer"/><label for="fo-transfer">Is transferable</label></div>
-      </div></div>
-    </div></div>
-    <div class="sub-ftr"><button class="bs" id="fo-back">&#8592; Back</button><button class="bp" id="fo-save">Save</button></div>
-  </div>
-</div>
-<div class="sub-wrap" id="sub-date">
-  <div class="sub-dlg">
-    <div class="sub-hdr"><div><div class="mtitle" id="sub-date-title">Add date field</div><div class="msub" id="sub-date-sub"></div></div></div>
-    <div class="sub-body"><div class="fg">
-      <div class="full fl"><label class="lb">SQL field name<span class="req">*</span></label><input type="text" id="sd-sql" placeholder="e.g. period_start_date"/><span class="hint" id="sd-sql-hint"></span></div>
-      <div class="fl"><label class="lb">Friendly name group</label><select id="sd-grp"><option value="">— select —</option><option>Core</option><option>HR</option><option>Metrics</option><option>Finance</option></select></div>
-      <div class="fl"><label class="lb">Friendly name<span class="req">*</span></label><select id="sd-friendly"><option value="">— select —</option><option>Period Start</option><option>Period End</option><option>Record Date</option><option>Hire Date</option><option>Leave Date</option></select></div>
-      <div class="fl"><label class="lb">Date format</label><select id="sd-format"><option value="">— select —</option><option>DD/MM/YYYY</option><option>MM/DD/YYYY</option><option>YYYY-MM-DD</option><option>MMM YYYY</option><option>YYYY</option></select></div>
-      <div class="full"><div class="cbs-grid">
-        <div class="cb-row"><input type="checkbox" id="sd-drill"/><label for="sd-drill">Is drilldown</label></div>
-        <div class="cb-row"><input type="checkbox" id="sd-time"/><label for="sd-time">Display time element</label></div>
-        <div class="cb-row"><input type="checkbox" id="sd-transfer"/><label for="sd-transfer">Is transferable</label></div>
-      </div></div>
-    </div></div>
-    <div class="sub-ftr"><button class="bs" id="sd-back">&#8592; Back</button><button class="bp" id="sd-save">Save</button></div>
-  </div>
-</div>
-<div class="cwrap" id="cwrap">
-  <div class="cbox"><div class="ctitle">Delete?</div><div class="cbody" id="cbody">This cannot be undone.</div><div class="cact"><button class="bs" id="btn-conf-cancel">Cancel</button><button class="bd" id="btn-conf-del">Delete</button></div></div>
-</div>
-<script>
-var PAGE_SIZE=5,FLD_PAGE_SIZE=5;
-var views=[
-  {id:1,title:'Employee Core View',sql:'vw_employee_core',group:'Core',type:'published',desc:'Summary of Metrics data month on month',dateField:'Period Start',disableInsight:false,ff:[{sql:'employee_id',friendly:'Employee ID',grp:'Core',drill:false,isText:false,pass:false,only:false,insight:false,transfer:false,cat:false},{sql:'department_id',friendly:'Department',grp:'Core',drill:true,isText:false,pass:true,only:false,insight:false,transfer:true,cat:false}],fof:[{sql:'turnover_rate',friendly:'Turnover Rate',grp:'Metrics',type:'standard',metric:'Leavers',calc:'sum',formula:'',drill:false,transfer:false}],df:[{sql:'period_start',friendly:'Period Start',grp:'Metrics',format:'MMM YYYY',drill:false,time:false,transfer:false}]},
-  {id:2,title:'Absence View',sql:'vw_absence',group:'HR',type:'system',desc:'Individual Absence records',dateField:'Record Date',disableInsight:false,ff:[{sql:'absence_id',friendly:'Employee ID',grp:'HR',drill:false,isText:false,pass:false,only:false,insight:false,transfer:false,cat:false}],fof:[{sql:'absence_rate',friendly:'Absence Rate',grp:'HR',type:'calculated',metric:'',calc:'',formula:'[Days Lost] / [Working Days] * 100',drill:false,transfer:false}],df:[{sql:'record_date',friendly:'Record Date',grp:'HR',format:'DD/MM/YYYY',drill:false,time:false,transfer:false}]},
-  {id:3,title:'Rolling 12 Months View',sql:'vw_rolling_12m',group:'Metrics',type:'published',desc:'Metrics calculating rolling 12 months values',dateField:'Period Start',disableInsight:true,ff:[{sql:'period_id',friendly:'Employee ID',grp:'Metrics',drill:false,isText:false,pass:false,only:false,insight:false,transfer:false,cat:false}],fof:[],df:[{sql:'period_start',friendly:'Period Start',grp:'Metrics',format:'MMM YYYY',drill:false,time:false,transfer:false}]}
-];
-var editId=null,deleteTargetId=null,deleteFieldType=null,deleteFieldIdx=null,cff=[],cfof=[],cdf=[],listPage=1,fieldPages={filter:1,formula:1,date:1},activeMenu=null,editingFieldIdx=null,formulaTypeFilter=null;
-function g(id){return document.getElementById(id);}
-document.addEventListener('click',function(e){if(!e.target.closest('.menu-wrap')){closeAllMenus();}});
-function closeAllMenus(){if(activeMenu){activeMenu.classList.remove('open');if(activeMenu.previousElementSibling)activeMenu.previousElementSibling.classList.remove('open');activeMenu=null;}}
-function makeMenu(items){var wrap=document.createElement('div');wrap.className='menu-wrap';var btn=document.createElement('button');btn.className='menu-btn';btn.innerHTML='&bull;&bull;&bull;';var drop=document.createElement('div');drop.className='dropdown';items.forEach(function(item){if(item===null){var d=document.createElement('div');d.className='ddiv';drop.appendChild(d);return;}var el=document.createElement('div');el.className='ditem'+(item.danger?' danger':'');el.textContent=item.label;el.addEventListener('click',function(e){e.stopPropagation();closeAllMenus();item.action();});drop.appendChild(el);});btn.addEventListener('click',function(e){e.stopPropagation();var isOpen=drop.classList.contains('open');closeAllMenus();if(!isOpen){drop.classList.add('open');btn.classList.add('open');activeMenu=drop;}});wrap.appendChild(btn);wrap.appendChild(drop);return wrap;}
-function renderList(){var tb=g('views-body');tb.innerHTML='';var total=views.length,totalPages=Math.max(1,Math.ceil(total/PAGE_SIZE));if(listPage>totalPages)listPage=totalPages;var start=(listPage-1)*PAGE_SIZE,items=views.slice(start,start+PAGE_SIZE);if(!total){tb.innerHTML='<tr><td colspan="4" style="text-align:center;padding:28px;font-size:13px;color:#888">No Views configured. Click + New View to get started.</td></tr>';g('list-pag').innerHTML='';return;}items.forEach(function(v){var tr=document.createElement('tr');var t1=document.createElement('td');t1.style.fontWeight='500';t1.textContent=v.title;var t2=document.createElement('td');t2.className='mono';t2.textContent=v.sql||'—';var t3=document.createElement('td');t3.className='desc-cell';t3.textContent=v.desc||'—';var t4=document.createElement('td');t4.style.textAlign='right';t4.appendChild(makeMenu([{label:'Edit',action:function(){openModal(v.id);}},null,{label:'Delete',danger:true,action:function(){promptDeleteView(v.id);}}]));tr.appendChild(t1);tr.appendChild(t2);tr.appendChild(t3);tr.appendChild(t4);tb.appendChild(tr);});renderPag('list-pag',listPage,totalPages,function(p){listPage=p;renderList();});}
-function renderPag(cid,cur,total,cb){var el=g(cid);if(total<=1){el.innerHTML='';return;}el.innerHTML='';var info=document.createElement('span');info.className='pag-info';info.textContent='Page '+cur+' of '+total;var btns=document.createElement('div');btns.className='pag-btns';var prev=document.createElement('button');prev.className='pag-btn';prev.textContent='← Prev';prev.disabled=cur===1;prev.addEventListener('click',function(){if(cur>1)cb(cur-1);});btns.appendChild(prev);for(var p=1;p<=total;p++){(function(pg){var pb=document.createElement('button');pb.className='pag-btn'+(pg===cur?' active':'');pb.textContent=pg;pb.addEventListener('click',function(){cb(pg);});btns.appendChild(pb);})(p);}var next=document.createElement('button');next.className='pag-btn';next.textContent='Next →';next.disabled=cur===total;next.addEventListener('click',function(){if(cur<total)cb(cur+1);});btns.appendChild(next);el.appendChild(info);el.appendChild(btns);}
-function openModal(id){editId=id;cff=[];cfof=[];cdf=[];fieldPages={filter:1,formula:1,date:1};if(id){var v=views.find(function(x){return x.id===id;});g('mtitle').textContent='Edit View';g('msub').textContent=v.title;g('f-title').value=v.title;g('f-sql').value=v.sql||'';g('f-group').value=v.group;g('f-dfield').value=v.dateField||'';g('f-vtype').value=v.type||'';g('f-desc').value=v.desc||'';g('tog-ins').classList.toggle('on',v.disableInsight);cff=v.ff.map(function(f){return Object.assign({},f);});cfof=v.fof.map(function(f){return Object.assign({},f);});cdf=v.df.map(function(f){return Object.assign({},f);});g('btn-del').style.display='';}else{g('mtitle').textContent='New View';g('msub').textContent='Complete the Summary then assign fields on each tab';['f-title','f-sql','f-desc'].forEach(function(i){g(i).value='';});g('f-group').value='';g('f-dfield').value='';g('f-vtype').value='';g('tog-ins').classList.remove('on');g('btn-del').style.display='none';}['f-title','f-group','f-vtype'].forEach(function(i){g(i).classList.remove('eb');});showTab('summary');renderFieldTab('filter');renderFieldTab('formula');renderFieldTab('date');g('mwrap').classList.add('open');}
-function closeModal(){g('mwrap').classList.remove('open');}
-function showTab(name){document.querySelectorAll('.pane').forEach(function(p){p.classList.remove('vis');});g('pane-'+name).classList.add('vis');document.querySelectorAll('.tab').forEach(function(t){t.classList.toggle('on',t.dataset.tab===name);});}
-function getFilteredArr(type){var map={filter:cff,formula:cfof,date:cdf};var searchId={filter:'ff-search',formula:'fo-search',date:'fd-search'};var arr=map[type];var q=(g(searchId[type]).value||'').toLowerCase().trim();if(q){arr=arr.filter(function(f){return(f.sql||'').toLowerCase().includes(q)||(f.friendly||'').toLowerCase().includes(q)||(f.grp||'').toLowerCase().includes(q);});}if(type==='formula'&&formulaTypeFilter){arr=arr.filter(function(f){return f.type===formulaTypeFilter;});}return arr;}
-function renderFieldTab(type){var tbId={filter:'tb-filter',formula:'tb-formula',date:'tb-date'}[type];var emId={filter:'em-filter',formula:'em-formula',date:'em-date'}[type];var pagId={filter:'fpag-filter',formula:'fpag-formula',date:'fpag-date'}[type];var tb=g(tbId);tb.innerHTML='';var arr=getFilteredArr(type);var total=arr.length,totalPages=Math.max(1,Math.ceil(total/FLD_PAGE_SIZE));if(fieldPages[type]>totalPages)fieldPages[type]=totalPages;var start=(fieldPages[type]-1)*FLD_PAGE_SIZE,pageItems=arr.slice(start,start+FLD_PAGE_SIZE);g(emId).style.display=arr.length?'none':'block';pageItems.forEach(function(f){var realIdx=({filter:cff,formula:cfof,date:cdf}[type]).indexOf(f);var tr=document.createElement('tr');var c1=document.createElement('td');c1.className='mono';c1.style.fontSize='12px';c1.textContent=f.sql||'—';var c2=document.createElement('td');c2.textContent=f.friendly||'—';var c3=document.createElement('td');c3.textContent=f.grp||'—';if(type==='formula'){var ct=document.createElement('td');var badge=document.createElement('span');badge.className='type-badge '+(f.type==='standard'?'badge-std':'badge-calc');badge.textContent=f.type==='standard'?'Standard':'Calculated';ct.appendChild(badge);var c4=document.createElement('td');c4.innerHTML=f.drill?'<span class="tick">&#10003;</span>':'<span class="cross">&#10007;</span>';var ca=document.createElement('td');ca.className='ac';ca.appendChild(makeMenu([{label:'Edit',action:(function(ri){return function(){openFieldDialog(type,ri);};})(realIdx)},null,{label:'Delete',danger:true,action:(function(ri){return function(){promptDeleteField(type,ri);};})(realIdx)}]));[c1,c2,c3,ct,c4,ca].forEach(function(c){tr.appendChild(c);});}else{var c4=document.createElement('td');c4.innerHTML=f.drill?'<span class="tick">&#10003;</span>':'<span class="cross">&#10007;</span>';var ca=document.createElement('td');ca.className='ac';ca.appendChild(makeMenu([{label:'Edit',action:(function(ri){return function(){openFieldDialog(type,ri);};})(realIdx)},null,{label:'Delete',danger:true,action:(function(ri){return function(){promptDeleteField(type,ri);};})(realIdx)}]));[c1,c2,c3,c4,ca].forEach(function(c){tr.appendChild(c);});}tb.appendChild(tr);});renderPag(pagId,fieldPages[type],totalPages,function(p){fieldPages[type]=p;renderFieldTab(type);});}
-function openFieldDialog(type,idx){editingFieldIdx=idx;var isEdit=idx!==null&&idx!==undefined&&idx>=0;if(type==='filter'){var f=isEdit?cff[idx]:{};g('sub-filter-title').textContent=isEdit?'Edit filter field':'Add filter field';g('sub-filter-sub').textContent=isEdit?'SQL field name cannot be changed':'';g('sf-sql').value=f.sql||'';g('sf-sql').disabled=isEdit;g('sf-sql-hint').textContent=isEdit?'SQL field name is locked for editing':'';g('sf-grp').value=f.grp||'';g('sf-friendly').value=f.friendly||'';['drill','text','pass','only','insight','transfer','cat'].forEach(function(k){var key=k==='text'?'isText':k;g('sf-'+k).checked=!!(f[key]);});g('sub-filter').classList.add('open');}else if(type==='formula'){var f=isEdit?cfof[idx]:{};g('sub-formula-title').textContent=isEdit?'Edit formula field':'Add formula field';g('sub-formula-sub').textContent=isEdit?'SQL field name cannot be changed':'';g('fo-sql').value=f.sql||'';g('fo-sql').disabled=isEdit;g('fo-sql-hint').textContent=isEdit?'SQL field name is locked for editing':'';g('fo-grp').value=f.grp||'';g('fo-friendly').value=f.friendly||'';g('fo-type').value=f.type||'';g('fo-metric').value=f.metric||'';g('fo-calc').value=f.calc||'';g('fo-formula-text').value=f.formula||'';g('fo-drill').checked=!!f.drill;g('fo-transfer').checked=!!f.transfer;updateFormulaBlocks();g('sub-formula').classList.add('open');}else if(type==='date'){var f=isEdit?cdf[idx]:{};g('sub-date-title').textContent=isEdit?'Edit date field':'Add date field';g('sub-date-sub').textContent=isEdit?'SQL field name cannot be changed':'';g('sd-sql').value=f.sql||'';g('sd-sql').disabled=isEdit;g('sd-sql-hint').textContent=isEdit?'SQL field name is locked for editing':'';g('sd-grp').value=f.grp||'';g('sd-friendly').value=f.friendly||'';g('sd-format').value=f.format||'';g('sd-drill').checked=!!f.drill;g('sd-time').checked=!!f.time;g('sd-transfer').checked=!!f.transfer;g('sub-date').classList.add('open');}}
-function updateFormulaBlocks(){var t=g('fo-type').value;g('fo-standard-block').style.display=t==='standard'?'block':'none';g('fo-calculated-block').style.display=t==='calculated'?'block':'none';}
-function validateSyntax(text){if(!text.trim())return{ok:false,msg:''};var b=0;for(var i=0;i<text.length;i++){if(text[i]==='[')b++;else if(text[i]===']')b--;}return b!==0?{ok:false,msg:'Unbalanced brackets — check your [Field] references'}:{ok:true,msg:'Syntax looks valid'};}
-g('fo-formula-text').addEventListener('input',function(){var r=validateSyntax(this.value);var msg=g('fo-syntax-msg');msg.textContent=r.msg;msg.style.color=r.ok?'#15803d':'#dc2626';});
-function saveFilterField(){var sql=g('sf-sql').value.trim(),friendly=g('sf-friendly').value;g('sf-sql').classList.toggle('eb',!sql);g('sf-friendly').classList.toggle('eb',!friendly);if(!sql||!friendly)return;var data={sql:sql,friendly:friendly,grp:g('sf-grp').value,drill:g('sf-drill').checked,isText:g('sf-text').checked,pass:g('sf-pass').checked,only:g('sf-only').checked,insight:g('sf-insight').checked,transfer:g('sf-transfer').checked,cat:g('sf-cat').checked};if(editingFieldIdx>=0){cff[editingFieldIdx]=Object.assign({},cff[editingFieldIdx],data);}else{cff.push(data);fieldPages.filter=Math.ceil(cff.length/FLD_PAGE_SIZE);}g('sub-filter').classList.remove('open');renderFieldTab('filter');}
-function saveFormulaField(){var sql=g('fo-sql').value.trim(),friendly=g('fo-friendly').value,type=g('fo-type').value,ok=true;g('fo-sql').classList.toggle('eb',!sql);if(!sql)ok=false;g('fo-friendly').classList.toggle('eb',!friendly);if(!friendly)ok=false;g('fo-type').classList.toggle('eb',!type);if(!type)ok=false;if(type==='standard'){var m=g('fo-metric').value,c=g('fo-calc').value;g('fo-metric').classList.toggle('eb',!m);g('fo-calc').classList.toggle('eb',!c);if(!m||!c)ok=false;}if(type==='calculated'){var ft=g('fo-formula-text').value.trim();g('fo-formula-text').classList.toggle('eb',!ft);if(!ft)ok=false;}if(!ok)return;var data={sql:sql,friendly:friendly,grp:g('fo-grp').value,type:type,metric:g('fo-metric').value,calc:g('fo-calc').value,formula:g('fo-formula-text').value.trim(),drill:g('fo-drill').checked,transfer:g('fo-transfer').checked};if(editingFieldIdx>=0){cfof[editingFieldIdx]=Object.assign({},cfof[editingFieldIdx],data);}else{cfof.push(data);fieldPages.formula=Math.ceil(cfof.length/FLD_PAGE_SIZE);}g('sub-formula').classList.remove('open');renderFieldTab('formula');}
-function saveDateField(){var sql=g('sd-sql').value.trim(),friendly=g('sd-friendly').value;g('sd-sql').classList.toggle('eb',!sql);g('sd-friendly').classList.toggle('eb',!friendly);if(!sql||!friendly)return;var data={sql:sql,friendly:friendly,grp:g('sd-grp').value,format:g('sd-format').value,drill:g('sd-drill').checked,time:g('sd-time').checked,transfer:g('sd-transfer').checked};if(editingFieldIdx>=0){cdf[editingFieldIdx]=Object.assign({},cdf[editingFieldIdx],data);}else{cdf.push(data);fieldPages.date=Math.ceil(cdf.length/FLD_PAGE_SIZE);}g('sub-date').classList.remove('open');renderFieldTab('date');}
-function promptDeleteField(type,idx){deleteFieldType=type;deleteFieldIdx=idx;var map={filter:cff,formula:cfof,date:cdf};var f=map[type][idx];g('cbody').textContent='Delete "'+f.sql+'"? This cannot be undone.';g('cwrap').classList.add('open');}
-function promptDeleteView(id){deleteTargetId=id;deleteFieldType=null;var v=views.find(function(x){return x.id===id;});g('cbody').textContent='Delete "'+v.title+'" and all its fields? This cannot be undone.';g('cwrap').classList.add('open');}
-function doDelete(){if(deleteFieldType){var map={filter:cff,formula:cfof,date:cdf};map[deleteFieldType].splice(deleteFieldIdx,1);g('cwrap').classList.remove('open');renderFieldTab(deleteFieldType);}else{views=views.filter(function(v){return v.id!==deleteTargetId;});g('cwrap').classList.remove('open');closeModal();renderList();}}
-function saveView(){var title=g('f-title').value.trim(),group=g('f-group').value,vtype=g('f-vtype').value;g('f-title').classList.toggle('eb',!title);g('f-group').classList.toggle('eb',!group);g('f-vtype').classList.toggle('eb',!vtype);if(!title||!group||!vtype)return;var data={title:title,sql:g('f-sql').value.trim(),group:group,type:vtype,desc:g('f-desc').value.trim(),dateField:g('f-dfield').value,disableInsight:g('tog-ins').classList.contains('on'),ff:cff.slice(),fof:cfof.slice(),df:cdf.slice()};if(editId){var idx=views.findIndex(function(v){return v.id===editId;});views[idx]=Object.assign({},views[idx],data);}else{data.id=Date.now();views.push(data);}closeModal();renderList();}
-g('btn-new').addEventListener('click',function(){openModal(null);});g('btn-close-modal').addEventListener('click',closeModal);g('btn-save').addEventListener('click',saveView);g('btn-del').addEventListener('click',function(){promptDeleteView(editId);});g('btn-conf-cancel').addEventListener('click',function(){g('cwrap').classList.remove('open');});g('btn-conf-del').addEventListener('click',doDelete);g('tog-ins').addEventListener('click',function(){this.classList.toggle('on');});document.querySelectorAll('.tab').forEach(function(t){t.addEventListener('click',function(){showTab(t.dataset.tab);});});g('btn-open-add-filter').addEventListener('click',function(){openFieldDialog('filter',-1);});g('btn-open-add-formula').addEventListener('click',function(){openFieldDialog('formula',-1);});g('btn-open-add-date').addEventListener('click',function(){openFieldDialog('date',-1);});g('sf-back').addEventListener('click',function(){g('sub-filter').classList.remove('open');});g('sf-save').addEventListener('click',saveFilterField);g('fo-back').addEventListener('click',function(){g('sub-formula').classList.remove('open');});g('fo-save').addEventListener('click',saveFormulaField);g('fo-type').addEventListener('change',updateFormulaBlocks);g('sd-back').addEventListener('click',function(){g('sub-date').classList.remove('open');});g('sd-save').addEventListener('click',saveDateField);
-['ff-search','fo-search','fd-search'].forEach(function(sid){var type={'ff':'filter','fo':'formula','fd':'date'}[sid.split('-')[0]];g(sid).addEventListener('input',function(){fieldPages[type]=1;renderFieldTab(type);});});
-g('formula-type-header').addEventListener('click',function(){if(formulaTypeFilter===null)formulaTypeFilter='standard';else if(formulaTypeFilter==='standard')formulaTypeFilter='calculated';else formulaTypeFilter=null;g('formula-type-filter-icon').textContent=formulaTypeFilter?('['+formulaTypeFilter+'] x'):'▼';fieldPages.formula=1;renderFieldTab('formula');});
-renderList();
-</script>
-</body>
-</html>
+.badge-std{background:#EFF6FF;color:#1E40AF
