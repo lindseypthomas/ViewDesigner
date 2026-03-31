@@ -180,8 +180,8 @@ textarea{resize:vertical;min-height:72px}
     <div class="sub-hdr"><div><div class="mtitle" id="sub-filter-title">Add filter field</div><div class="msub" id="sub-filter-sub"></div></div></div>
     <div class="sub-body"><div class="fg">
       <div class="full fl"><label class="lb">SQL field name<span class="req">*</span></label><select id="sf-sql"><option value="">— select SQL field —</option><option>absence_id</option><option>cost_centre_id</option><option>department_id</option><option>employee_id</option><option>employee_status</option><option>gender</option><option>grade_id</option><option>job_title_id</option><option>location_id</option><option>manager_id</option><option>nationality</option><option>pay_band_id</option><option>region_id</option><option>tenure_band</option></select><span class="hint" id="sf-sql-hint"></span></div>
-      <div class="fl"><label class="lb">Friendly name group</label><select id="sf-grp"><option value="">— select —</option><option>Core</option><option>HR</option><option>Metrics</option><option>Finance</option></select></div>
-      <div class="fl"><label class="lb">Friendly name<span class="req">*</span></label><select id="sf-friendly"><option value="">— select —</option><option>Department</option><option>Location</option><option>Employee ID</option><option>Employee Name</option><option>Cost Centre</option><option>Job Title</option></select></div>
+      <div class="fl"><label class="lb">Friendly name group</label><div class="combo-wrap" id="sf-grp-wrap"><div class="combo-input-row" id="sf-grp-row"><input type="text" id="sf-grp" placeholder="Search or select group…" autocomplete="off"/><span class="combo-arrow" id="sf-grp-arrow">&#9660;</span></div><div class="combo-dropdown" id="sf-grp-drop"></div></div></div>
+      <div class="fl"><label class="lb">Friendly name<span class="req">*</span></label><div class="combo-wrap" id="sf-friendly-wrap"><div class="combo-input-row" id="sf-friendly-row"><input type="text" id="sf-friendly" placeholder="Search or select friendly name…" autocomplete="off"/><span class="combo-arrow" id="sf-friendly-arrow">&#9660;</span></div><div class="combo-dropdown" id="sf-friendly-drop"></div></div></div>
       <div class="full"><div class="cbs-grid">
         <div class="cb-row"><input type="checkbox" id="sf-drill"/><label for="sf-drill">Is drilldown</label></div>
         <div class="cb-row"><input type="checkbox" id="sf-text"/><label for="sf-text">Is text entry filter</label></div>
@@ -238,8 +238,8 @@ textarea{resize:vertical;min-height:72px}
     <div class="sub-hdr"><div><div class="mtitle" id="sub-date-title">Add date field</div><div class="msub" id="sub-date-sub"></div></div></div>
     <div class="sub-body"><div class="fg">
       <div class="full fl"><label class="lb">SQL field name<span class="req">*</span></label><select id="sd-sql"><option value="">— select SQL field —</option><option>effective_date</option><option>hire_date</option><option>leave_date</option><option>period_end</option><option>period_start</option><option>record_date</option><option>review_date</option><option>termination_date</option></select><span class="hint" id="sd-sql-hint"></span></div>
-      <div class="fl"><label class="lb">Friendly name group</label><select id="sd-grp"><option value="">— select —</option><option>Core</option><option>HR</option><option>Metrics</option><option>Finance</option></select></div>
-      <div class="fl"><label class="lb">Friendly name<span class="req">*</span></label><select id="sd-friendly"><option value="">— select —</option><option>Period Start</option><option>Period End</option><option>Record Date</option><option>Hire Date</option><option>Leave Date</option></select></div>
+      <div class="fl"><label class="lb">Friendly name group</label><div class="combo-wrap" id="sd-grp-wrap"><div class="combo-input-row" id="sd-grp-row"><input type="text" id="sd-grp" placeholder="Search or select group…" autocomplete="off"/><span class="combo-arrow" id="sd-grp-arrow">&#9660;</span></div><div class="combo-dropdown" id="sd-grp-drop"></div></div></div>
+      <div class="fl"><label class="lb">Friendly name<span class="req">*</span></label><div class="combo-wrap" id="sd-friendly-wrap"><div class="combo-input-row" id="sd-friendly-row"><input type="text" id="sd-friendly" placeholder="Search or select friendly name…" autocomplete="off"/><span class="combo-arrow" id="sd-friendly-arrow">&#9660;</span></div><div class="combo-dropdown" id="sd-friendly-drop"></div></div></div>
       <div class="fl"><label class="lb">Date format</label><select id="sd-format"><option value="">— select —</option><option>DD/MM/YYYY</option><option>MM/DD/YYYY</option><option>YYYY-MM-DD</option><option>MMM YYYY</option><option>YYYY</option></select></div>
       <div class="full"><div class="cbs-grid">
         <div class="cb-row"><input type="checkbox" id="sd-drill"/><label for="sd-drill">Is drilldown</label></div>
@@ -420,6 +420,67 @@ saveFormulaField = function(){
   _origSaveFormula();
 };
 // ── end combobox ─────────────────────────────────────────────────────────────
+
+
+// ── Filter & Date combobox initialisations ───────────────────────────────────
+makeCombo({
+  inputId:'sf-grp', dropId:'sf-grp-drop', arrowId:'sf-grp-arrow', rowId:'sf-grp-row',
+  items:['Core','HR','Metrics','Finance','Payroll','Operations','Learning & Development']
+});
+makeCombo({
+  inputId:'sf-friendly', dropId:'sf-friendly-drop', arrowId:'sf-friendly-arrow', rowId:'sf-friendly-row',
+  items:['Department','Location','Employee ID','Employee Name','Cost Centre','Job Title','Gender','Grade','Manager','Nationality','Pay Band','Region','Tenure Band']
+});
+makeCombo({
+  inputId:'sd-grp', dropId:'sd-grp-drop', arrowId:'sd-grp-arrow', rowId:'sd-grp-row',
+  items:['Core','HR','Metrics','Finance','Payroll','Operations','Learning & Development']
+});
+makeCombo({
+  inputId:'sd-friendly', dropId:'sd-friendly-drop', arrowId:'sd-friendly-arrow', rowId:'sd-friendly-row',
+  items:['Period Start','Period End','Record Date','Hire Date','Leave Date','Effective Date','Review Date','Termination Date']
+});
+
+// ── Patch openFieldDialog to set combobox values for filter & date ────────────
+var _origOpenFieldDialog2 = openFieldDialog;
+openFieldDialog = function(type, idx) {
+  _origOpenFieldDialog2(type, idx);
+  var isEdit = idx !== null && idx !== undefined && idx >= 0;
+  if (type === 'filter') {
+    var f = isEdit ? cff[idx] : {};
+    var sfGrp = document.getElementById('sf-grp');
+    var sfFriendly = document.getElementById('sf-friendly');
+    if (sfGrp && sfGrp._comboSetValue) sfGrp._comboSetValue(f.grp || '');
+    if (sfFriendly && sfFriendly._comboSetValue) sfFriendly._comboSetValue(f.friendly || '');
+  }
+  if (type === 'date') {
+    var f = isEdit ? cdf[idx] : {};
+    var sdGrp = document.getElementById('sd-grp');
+    var sdFriendly = document.getElementById('sd-friendly');
+    if (sdGrp && sdGrp._comboSetValue) sdGrp._comboSetValue(f.grp || '');
+    if (sdFriendly && sdFriendly._comboSetValue) sdFriendly._comboSetValue(f.friendly || '');
+  }
+};
+
+// ── Patch saveFilterField to read combobox values ─────────────────────────────
+var _origSaveFilter = saveFilterField;
+saveFilterField = function() {
+  var sfGrp = document.getElementById('sf-grp');
+  var sfFriendly = document.getElementById('sf-friendly');
+  if (sfGrp && sfGrp._comboGetValue) sfGrp.value = sfGrp._comboGetValue();
+  if (sfFriendly && sfFriendly._comboGetValue) sfFriendly.value = sfFriendly._comboGetValue();
+  _origSaveFilter();
+};
+
+// ── Patch saveDateField to read combobox values ───────────────────────────────
+var _origSaveDate = saveDateField;
+saveDateField = function() {
+  var sdGrp = document.getElementById('sd-grp');
+  var sdFriendly = document.getElementById('sd-friendly');
+  if (sdGrp && sdGrp._comboGetValue) sdGrp.value = sdGrp._comboGetValue();
+  if (sdFriendly && sdFriendly._comboGetValue) sdFriendly.value = sdFriendly._comboGetValue();
+  _origSaveDate();
+};
+// ── end filter & date comboboxes ──────────────────────────────────────────────
 
 </script>
 </body>
