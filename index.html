@@ -108,6 +108,22 @@ textarea{resize:vertical;min-height:72px}
 .cbody{font-size:13px;color:#888;margin-bottom:20px;line-height:1.6}
 .cact{display:flex;gap:8px;justify-content:flex-end}
 .filter-icon{font-size:11px;margin-left:4px;opacity:.6}
+
+.combo-wrap{position:relative;width:100%}
+.combo-input-row{display:flex;align-items:center;border:0.5px solid #d0d0cc;border-radius:8px;background:#fff;overflow:hidden;transition:border-color .15s}
+.combo-input-row:focus-within{border-color:#2563eb}
+.combo-input-row.eb{border-color:#dc2626!important}
+.combo-input-row input{flex:1;border:none;outline:none;padding:7px 10px;font-size:13px;color:#1a1a1a;background:transparent;font-family:inherit}
+.combo-input-row .combo-arrow{padding:0 8px;color:#888;font-size:11px;cursor:pointer;user-select:none;flex-shrink:0}
+.combo-input-row .combo-arrow:hover{color:#1a1a1a}
+.combo-dropdown{display:none;position:fixed;background:#fff;border:0.5px solid #d0d0cc;border-radius:8px;min-width:200px;max-height:220px;overflow-y:auto;z-index:9999;box-shadow:0 4px 12px rgba(0,0,0,0.12)}
+.combo-dropdown.open{display:block}
+.combo-opt{padding:8px 12px;font-size:13px;color:#1a1a1a;cursor:pointer;white-space:nowrap}
+.combo-opt:hover{background:#f8f8f6}
+.combo-opt.add-new{color:#2563eb;font-weight:500;border-top:0.5px solid #e5e7eb}
+.combo-opt.add-new:hover{background:#eff6ff}
+.combo-opt.no-match{color:#9ca3af;font-style:italic;cursor:default}
+.combo-opt.no-match:hover{background:transparent}
 </style>
 </head>
 <body>
@@ -184,8 +200,20 @@ textarea{resize:vertical;min-height:72px}
     <div class="sub-hdr"><div><div class="mtitle" id="sub-formula-title">Add formula field</div><div class="msub" id="sub-formula-sub"></div></div></div>
     <div class="sub-body"><div class="fg">
       <div class="full fl"><label class="lb">SQL field name<span class="req">*</span></label><select id="fo-sql"><option value="">— select SQL field —</option><option>absence_rate</option><option>avg_salary</option><option>cost_per_hire</option><option>headcount_growth</option><option>joiners_count</option><option>leavers_count</option><option>retention_rate</option><option>time_to_fill</option><option>turnover_rate</option></select><span class="hint" id="fo-sql-hint"></span></div>
-      <div class="fl"><label class="lb">Friendly name group</label><select id="fo-grp"><option value="">— select —</option><option>Core</option><option>HR</option><option>Metrics</option><option>Finance</option></select></div>
-      <div class="fl"><label class="lb">Friendly name<span class="req">*</span></label><select id="fo-friendly"><option value="">— select —</option><option>Turnover Rate</option><option>Absence Rate</option><option>Headcount Growth</option><option>Avg Salary</option></select></div>
+      <div class="fl"><label class="lb">Friendly name group</label><div class="combo-wrap" id="fo-grp-wrap">
+  <div class="combo-input-row" id="fo-grp-row">
+    <input type="text" id="fo-grp" placeholder="Search or select group…" autocomplete="off"/>
+    <span class="combo-arrow" id="fo-grp-arrow">&#9660;</span>
+  </div>
+  <div class="combo-dropdown" id="fo-grp-drop"></div>
+</div></div>
+      <div class="fl"><label class="lb">Friendly name<span class="req">*</span></label><div class="combo-wrap" id="fo-friendly-wrap">
+  <div class="combo-input-row" id="fo-friendly-row">
+    <input type="text" id="fo-friendly" placeholder="Search or select friendly name…" autocomplete="off"/>
+    <span class="combo-arrow" id="fo-friendly-arrow">&#9660;</span>
+  </div>
+  <div class="combo-dropdown" id="fo-friendly-drop"></div>
+</div></div>
       <div class="fl"><label class="lb">Formula type<span class="req">*</span></label><select id="fo-type"><option value="">— select —</option><option value="standard">Standard</option><option value="calculated">Calculated</option></select></div>
       <div class="fl">&nbsp;</div>
       <div class="full" id="fo-standard-block" style="display:none"><div class="conditional-block"><div class="fg">
@@ -259,6 +287,140 @@ g('btn-new').addEventListener('click',function(){openModal(null);});g('btn-close
 ['ff-search','fo-search','fd-search'].forEach(function(sid){var type={'ff':'filter','fo':'formula','fd':'date'}[sid.split('-')[0]];g(sid).addEventListener('input',function(){fieldPages[type]=1;renderFieldTab(type);});});
 g('formula-type-header').addEventListener('click',function(){if(formulaTypeFilter===null)formulaTypeFilter='standard';else if(formulaTypeFilter==='standard')formulaTypeFilter='calculated';else formulaTypeFilter=null;g('formula-type-filter-icon').textContent=formulaTypeFilter?('['+formulaTypeFilter+'] x'):'▼';fieldPages.formula=1;renderFieldTab('formula');});
 renderList();
+
+// ── Combobox factory ────────────────────────────────────────────────────────
+function makeCombo(opts){
+  // opts: { inputId, dropId, arrowId, rowId, items, placeholder }
+  var input = document.getElementById(opts.inputId);
+  var drop  = document.getElementById(opts.dropId);
+  var arrow = document.getElementById(opts.arrowId);
+  var row   = document.getElementById(opts.rowId);
+  if(!input||!drop) return;
+
+  var allItems = opts.items.slice();
+  var selectedValue = '';
+
+  function positionDrop(){
+    var rect = row.getBoundingClientRect();
+    drop.style.top  = (rect.bottom + 4) + 'px';
+    drop.style.left = rect.left + 'px';
+    drop.style.width = rect.width + 'px';
+    drop.style.right = 'auto';
+  }
+
+  function renderDrop(filter){
+    var q = (filter||'').toLowerCase().trim();
+    var matches = q ? allItems.filter(function(i){ return i.toLowerCase().includes(q); }) : allItems;
+    drop.innerHTML = '';
+    if(!matches.length && q){
+      var nm = document.createElement('div');
+      nm.className = 'combo-opt no-match';
+      nm.textContent = 'No matches';
+      drop.appendChild(nm);
+    }
+    matches.forEach(function(item){
+      var el = document.createElement('div');
+      el.className = 'combo-opt';
+      el.textContent = item;
+      el.addEventListener('mousedown', function(e){
+        e.preventDefault();
+        selectedValue = item;
+        input.value = item;
+        input.dataset.value = item;
+        closeDrop();
+      });
+      drop.appendChild(el);
+    });
+    // Add new option
+    var addEl = document.createElement('div');
+    addEl.className = 'combo-opt add-new';
+    addEl.textContent = q ? '+ Add "' + filter + '"' : '+ Add new';
+    addEl.addEventListener('mousedown', function(e){
+      e.preventDefault();
+      var newVal = q || prompt('Enter new value:');
+      if(!newVal || !newVal.trim()) return;
+      newVal = newVal.trim();
+      if(allItems.indexOf(newVal) === -1) allItems.push(newVal);
+      selectedValue = newVal;
+      input.value = newVal;
+      input.dataset.value = newVal;
+      closeDrop();
+    });
+    drop.appendChild(addEl);
+  }
+
+  function openDrop(){
+    positionDrop();
+    renderDrop(input.value);
+    drop.classList.add('open');
+  }
+
+  function closeDrop(){
+    drop.classList.remove('open');
+  }
+
+  input.addEventListener('input', function(){
+    openDrop();
+    renderDrop(input.value);
+  });
+  input.addEventListener('focus', function(){ openDrop(); });
+  input.addEventListener('blur',  function(){ setTimeout(closeDrop, 150); });
+  arrow.addEventListener('mousedown', function(e){
+    e.preventDefault();
+    if(drop.classList.contains('open')){ closeDrop(); } else { input.focus(); openDrop(); }
+  });
+
+  // Expose getValue / setValue for the rest of the app
+  input._comboGetValue = function(){ return input.dataset.value || input.value || ''; };
+  input._comboSetValue = function(val){
+    input.value = val || '';
+    input.dataset.value = val || '';
+    selectedValue = val || '';
+  };
+  input._comboSetEnabled = function(enabled){
+    input.disabled = !enabled;
+    arrow.style.pointerEvents = enabled ? '' : 'none';
+    arrow.style.opacity = enabled ? '' : '0.4';
+  };
+}
+
+// Initialise both formula comboboxes
+makeCombo({
+  inputId:'fo-grp', dropId:'fo-grp-drop', arrowId:'fo-grp-arrow', rowId:'fo-grp-row',
+  items:['Core','HR','Metrics','Finance','Payroll','Operations','Learning & Development']
+});
+makeCombo({
+  inputId:'fo-friendly', dropId:'fo-friendly-drop', arrowId:'fo-friendly-arrow', rowId:'fo-friendly-row',
+  items:['Turnover Rate','Absence Rate','Headcount Growth','Avg Salary','Time to Fill','Cost per Hire','Retention Rate','Joiners Count','Leavers Count']
+});
+
+// ── Patch openFieldDialog to use combobox getValue/setValue for formula ──────
+var _origOpenFieldDialog = openFieldDialog;
+openFieldDialog = function(type, idx){
+  _origOpenFieldDialog(type, idx);
+  if(type === 'formula'){
+    var foGrpInput    = document.getElementById('fo-grp');
+    var foFriendlyInput = document.getElementById('fo-friendly');
+    var isEdit = idx !== null && idx !== undefined && idx >= 0;
+    var f = isEdit ? cfof[idx] : {};
+    if(foGrpInput && foGrpInput._comboSetValue)     foGrpInput._comboSetValue(f.grp || '');
+    if(foFriendlyInput && foFriendlyInput._comboSetValue) foFriendlyInput._comboSetValue(f.friendly || '');
+  }
+};
+
+// ── Patch saveFormulaField to read combobox values ──────────────────────────
+var _origSaveFormula = saveFormulaField;
+saveFormulaField = function(){
+  var foGrpInput      = document.getElementById('fo-grp');
+  var foFriendlyInput = document.getElementById('fo-friendly');
+  var friendly = foFriendlyInput ? (foFriendlyInput._comboGetValue ? foFriendlyInput._comboGetValue() : foFriendlyInput.value) : '';
+  // Temporarily set .value so original validation logic picks it up
+  if(foFriendlyInput) foFriendlyInput.value = friendly;
+  if(foGrpInput && foGrpInput._comboGetValue) foGrpInput.value = foGrpInput._comboGetValue();
+  _origSaveFormula();
+};
+// ── end combobox ─────────────────────────────────────────────────────────────
+
 </script>
 </body>
 </html>
